@@ -42,14 +42,12 @@ class APIRequestHandling(BaseHTTPRequestHandler):
         if self.path == '/posty':
             content_length = int(self.headers['Content-Length'])
             payload_data = self.rfile.read(content_length)
-            check_length = {'length-of-body': content_length, 'data': payload_data}
             decoded_json_data = json.loads(payload_data)
             reason = decoded_json_data.get('Reason')
             self.send_header('Location', 'Melbourne')
             self.end_headers()
             self.send_response(200, message='OK')
             self.wfile.write(payload_data)
-            self.wfile.write(json.dumps(check_length).encode('utf-8'))
 
             with open('payload_write.txt', mode='a') as f:
                 f.write(json.dumps(decoded_json_data))
