@@ -19,9 +19,7 @@
 - ```curl -X RETRIEVE 'http://localhost:8080/hello/name' -v```
 - Returns the following message:
 -   ```json
-    {
-  "Name": "Shek",
-    }
+    {"Name": "Shek",}
     ```
 - Change this to whatever you want.
 
