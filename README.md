@@ -7,11 +7,9 @@
 ## Implementation
 
 - Simply clone this repo, and run ```python api_server.py```.
-    - I've aliased ```python3.11 to python```, use the right interpreter installed in your env (Refer to docs above).
 - This should start a local server using port 8080.
 - To make requests, simply use cURL.
-    - I've deliberately used non-standard method definitions here (only for ```GET```, ```POST``` is still the same.)to just play around. Feel free to change this in the API Handler.
-
+    - I've deliberately used non-standard method definitions here (only for ```GET```, ```POST``` is still the same.)to just play around.
 
 ### Retrieve
 
@@ -19,9 +17,8 @@
 - ```curl -X RETRIEVE 'http://localhost:8080/hello/name' -v```
 - Returns the following message:
 -   ```json
-    {"Name": "Shek",}
+    {"Name": "velvets"}
     ```
-- Change this to whatever you want.
 
 ### POST
 
