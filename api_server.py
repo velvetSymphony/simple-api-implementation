@@ -1,20 +1,10 @@
-#!/usr/bin/env python
-
-# You may have to use python3 instead of python, I've locally aliased python3.11 to be python.
+#!/usr/bin/env python3
 
 # Going to implement a basic HTTP server over here using the ```http.server module```
 # Ref https://docs.python.org/3/library/http.server.html
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-
-# What do I need to do?
-# Start server on port 8080.
-# Send request to port 8080
-# Receive response
-
-
-# Defining class for request handling to server
 
 # Deliberate defined a custom method (not adhering to any API standards)
 
@@ -24,7 +14,7 @@ class APIRequestHandling(BaseHTTPRequestHandler):
             self.send_response(200, message='OK!')
             self.send_header('XYZ', 'Define your header here')
             self.end_headers()
-            message = {'Name' : 'Shek'}
+            message = {'Name' : 'velvets'}
             self.wfile.write(json.dumps(message).encode('utf-8'))
         else:
             self.send_response(404, message='Not Found!')
@@ -43,8 +33,7 @@ class APIRequestHandling(BaseHTTPRequestHandler):
             content_length = int(self.headers['Content-Length'])
             payload_data = self.rfile.read(content_length)
             decoded_json_data = json.loads(payload_data)
-            reason = decoded_json_data.get('Reason')
-            self.send_header('Location', 'Melbourne')
+            self.send_header('Location', 'random')
             self.end_headers()
             self.send_response(200, message='OK')
             self.wfile.write(payload_data)
@@ -58,7 +47,7 @@ class APIRequestHandling(BaseHTTPRequestHandler):
             message = {'Error': 'Invalid Endpoint, Not found!'}
             self.wfile.write(json.dumps(message).encode('utf-8'))
             
-def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
+def run(server_class=HTTPServer):
     server_address = ('', 8080)
     httpd = server_class(server_address, APIRequestHandling)
     print("Starting Server...It's a simple HTTP Server :-)")
@@ -66,4 +55,4 @@ def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
     httpd.serve_forever()
 
 if __name__ == '__main__':
-    run();
+    run()
