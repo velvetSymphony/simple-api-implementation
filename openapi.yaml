@@ -5,7 +5,7 @@ info:
 
 paths:
     /hello:
-        get:
+        retrieve:
             summary: Returns a Greeting message
             responses:
                 '200':
